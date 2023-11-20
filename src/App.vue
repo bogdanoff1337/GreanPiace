@@ -1,5 +1,6 @@
 
 <template>
+  <vue-bar>
   <div class="div">
     <!-- header -->
     <div class="hero">
@@ -26,25 +27,29 @@
 <!-- Services -->
     <div class="services">Services</div>
     
-    <div class="services__heading">
+  <div class="services__heading">
     <div class="services__content">
       <!-- Стрілки для перегляду назад та вперед -->
       <div class="slider__arrow slider__arrow--prev" @click="prevSlide">&lt;</div>
 
-      <div class="services__item">
+      <transition name="fade" mode="out-in">
+        <div :key="cards[currentIndex].id" class="services__item">
+      
         <div class="services__card">
           <img
             loading="lazy"
-            :src="cards[currentIndex].img"
+            :src="cards[currentIndex].srcSet"
             class="services__img"
+            :alt="`Card ${cards[currentIndex].id}`"
           />
           <div class="services__description">
             <div class="services__title">{{ cards[currentIndex].title }}</div>
             <div class="services__text">{{ cards[currentIndex].text }}</div>
           </div>
+      
         </div>
       </div>
-
+    </transition>
       <!-- Стрілки для перегляду назад та вперед -->
       <div class="slider__arrow slider__arrow--next" @click="nextSlide">&gt;</div>
     </div>
@@ -246,10 +251,7 @@
           <div class="contact-header">
             <div class="contact-column">
               <div class="contact__form">
-                <input class="contact__name" type="text" placeholder="name">
-                <input class="contact__email" type="text" placeholder="email">
-                <input class="contact__phone" type="number" placeholder="phone">
-                <div class="help__button" style="margin-top: 14px;">Submit</div>
+                <contact-form />
               </div>
             </div>
             <div class="contact__side__bar">
@@ -282,35 +284,47 @@
                 </div>
               </div>
             </div>
-            
+          
           </div>
         </div>
       </div>
     </div>
     <div class="footer"> Created by Bohdan Panasiuk </div>
   </div>
+</vue-bar>
 </template>
 
 <script>
+
+import Vuebar from 'vuebar';
+import ContactForm from './componets/ContactForm.vue'
+
+
 export default {
+ 
   data() {
+    
     return {
       currentIndex: 0,
       cards: [
         {
-          img: "./img/1.png",
+          id: 1,
+          srcSet: "https://lh3.googleusercontent.com/pw/ADCreHfFTeZv9oZkHdPg5fTPMSoLbokq5lEYDnaNQa-xI52pEvEjRdUeNP0vo1LE3IK9-0rgMkXZjqaVL9_WvZEvFx-cil3-TbVNFYgm4sdk0ZDaTp3008cI36FMPcldPnHw4iQQqT-kxU7DAYAjJLQrWW5wt6Jl7a6hP50pyhDc8s_HFSnUJxxZZlF9xcZrho9msN3lpzDNAIJow0sqX_yn-49fkDQTxiGG6Wak-BoG9o6ayfwr9VVad90nDki557BnYLImgpcMHePnMfL_C63Bgf1mspq-XPlFDf56RP-_Bz43Q8HKS8VqjyA_DyQkBlfpXdX7dlj0Blr997hp3OKZgQSiD-LvPfdB_txOLFhct2I-6TxAY2b_rCarm4eDHBODQJz5kT4Fz6SVnXD4RHdPPBg_giaLXqSqcAq5Z2_R5cgPToHE2L1T0gE9vJlPySEhpeq7-Z58_BarT1FObqw9HTDFAoPcTWEqwb-gg8npmA9m6we6WripkP9AsUhPVfJDvoAgjfxhG_MO97gHeyE_DvQBvEGPvvk715wEPWS3XSoSe3psU6sZrnrTIqk_snlXeI021NhUxoe05mvx3mYJh8VRzT1DPB4Wp6y4bFEjz5nYj9MZY5sFeEqnTmrGKPOBb3Tkphf2WcH0X_z7KI9rXWadLiKXYMRGCSJhk_FV3t48Pc7UeNE-D3tmqoDQblS9pfIiBBXZe0GgX3KjFUVTt7FX_gO8VU2Xm_AKEucDhei7JH5-7AJeqli4gXr09eepNZUPmWtGebgMHYffCn7ey-1ij7HWR6mGg258SIMMyvOMSSftd-gYUs8h_1QL5mkzxWza-EMBZxw0M3zBKvagZX_aw171fOy73cWFKo8ip4045quonrmS8UpfrkOHog5yciRFRx7IhnzxSvZjHyXcaJ4KNPrGwuFMR7yQQNiODivHPcj8592euCN7OpHYdLw=w385-h290-s-no-gm?authuser=0",
           title: "Lorem Ipsum 1",
-          text: "Text for card 1",
+          text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled",
         },
         {
-          img: "./img/2.png",
+          id: 2,
+          srcSet: "https://lh3.googleusercontent.com/pw/ADCreHcezph0NgoVNuuaD3Mtb6Wi0KsOFRzPdZj81iwrZvpPnY8vPtnz_0TaZXYH7YZWcmAyZsA5JwfuEG7T9QOvAG2isUDTXjrqF1Ex6SRRtooOhzVsDjmVs043osCjo7a_xbWIMJA2SsK0JD6EDgL6lwksmVKdKzYIhB7fsSyTvtlyGkdzcPR6hav0ZDacsmDoLjRLE6_e1x7XXkhL8MdWBSXUZhr6wf_aXW83xm9Oos3riCOoUs5atL50lJFGtZAYOMTBeoZ-2occwHpMRyt3EbE3JaH2dn9pURzvSE7bfgW8LcxUit4BZDRNL7Fx0pvqhbz6nYYs-NuIeGkrev1MlSPK9pCm3M6inImcxV9XWsao2LAi2YPksL9N2XoY01UcMBaf7qOjZGJbpeJHxeUJR9xejIc460zeTBF9zAn02_kpbmwaxVWRevwhy1CSTOoys9nGItEvGBF-0euWPZCQIOa1mtyiLGj1B719f_Q0Mjnlg02qnXSMQfFucxtZb5r2hASeZAOafbcHc9sfJ3v1wYvSf2YbfzV7geh_R1HNsTChe7zGqwLGLOfOZdruka3fsEs-g_rage-j97IWvLhG6Bba1F1kni5v-5a0t4YIEtDDzwtG50cKr3H5j7dQOiIbeunoU0osln2ochKFO2000axrKXQoeeXfulfTLpvKaOUw2i9zeNMs3vWp3FZb9hJuq2ah8AnT-NFGKSStkPapNqCVq55Ni_XiEpu5dLUDqevTjFUPAhNF9DTVusvBUsyA68RzXmlFueEU4T4ZugD3VbPQhz34v2dpzilDyqeXXXwCmVm9NbWsTGiwBdcoJp-wJ8f5vMPCT5ahx0dJVrs3c1oWKGGcH-Dfy1m5U6FxujKlPoKI_ihk2m22YHEKPUCw7Ft6CqEKCuz2tKcT5CbVWdViSoQ96WHYjmlWD5PWg5wYkRAdEKnNsgsQzmocW_Q=w385-h290-s-no-gm?authuser=0",
+
           title: "Lorem Ipsum 2",
-          text: "Text for card 2",
+          text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled",
         },
          {
-          img: "./img/3.png",
+          id: 3,
+          srcSet: "https://lh3.googleusercontent.com/pw/ADCreHeqEsAnq65ks5B4_8SZLaDo8nUQ8G5nLbhlB_z3dU1KUAW-46JWK7pB-Q5mMdFSCey_xykZldm1Q2v6Dzf6Zxb9wOb3TtTTizgALndC7qct5nI0WsM5AGCCFo_WH7K8on6BkEv2eeKIoYd6G96t3s6Tpo9rWX1jOlqmf_CWCCEuHmsTPDZRKsn6riBDrPWXJy-mGEy1WITcwxbQFYM8oP28BcLvCCgj0L0u0sF_TCcCY1gXQp2XLStRqB5lL5jA4-Tg7yGrZcBqEaVjWdyj23jYwFba_SGVTFLAJWPruIPMb89_OP2kknny8iuO4ARaYaWG4zFR3b7FnLtOXz42zrotdTDAE5BQA3NYZh5N287Ju6IbbL6wlCaQ8xYm4qtqnTNhHetzOkMaX77TnPqqXdTNi988nB4mGQXZjXGIpwO1Fr5LiXHw6AZdko1xrpxi066Ov5aDY81oJdN2wKE0AqyCqsUmWSypiWmhi8eXpC718h_ILrHgZI4KhehF1L1EU7JSbwUYufjIFw4qcV-C4Hx1eBpFwskwSeIfkk-SWBceT0BnnO27hmCAr603HpS_1S137nd9qDTtJes0ZUBWpcjLWu6x8peUeZKJwNHZYP4VPrgMR-CKP9mNG7KN9rQSaIzZbBkM21KqYEaFsss9kF-L4ls0T-zjwLcO_HxUqNmo3CMUKZMIBA66oOemumFganmy5sQTDJ_3ssLYnth98NqsKwvU-_hoR5DbXEIP8Ji5QCQxqmp3HtZW6PjUUVqLdrwaIcG25MdHNYmoXo45TDXQEvVHpTe6uc36Ba1DpNEqo2i84s9nHe3xNNqzqrHvlPem_zkzsg1UmYo6VhnQZICo_suH-BW7E0e4HyjzzJfIO7evqwb1_RgZi0CRir42REooQD-uR1XNtMyTT_N6ZOcLqJMOJWkDmMnp8JnFhM3g3E7X4itm08Cjo4m5id8=w385-h290-s-no-gm?authuser=0",
           title: "Lorem Ipsum 3",
-          text: "Text for card 3",
+          text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled",
         },
       ],
     };
@@ -325,6 +339,14 @@ export default {
       this.currentIndex = (this.currentIndex + 1) % this.cards.length;
     },
   },
+
+
+     
+     
+      components: {
+       Vuebar,
+       ContactForm,
+    },
 };
 
 </script>
@@ -332,7 +354,12 @@ export default {
 
 
 <style scoped>
-
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 0.5s;
+}
+.fade-enter, .fade-leave-to {
+  opacity: 0;
+}
 .services__heading {
   position: relative;
 }
