@@ -1,7 +1,8 @@
+
 <template>
   <div class="div">
     <!-- header -->
-        <div class="hero">
+    <div class="hero">
           <img
             loading="lazy"
             src="./img/hero.jpg"
@@ -11,10 +12,11 @@
             <div class="hero__block">
               <img
                 loading="lazy"
-                src="https://cdn.builder.io/api/v1/image/assets/TEMP/c456046e-4dee-429f-ba8d-cbbbb3bf1934?"
+                src="./img/lawncare.png"
                 class="hero__image-2"
               />
-              <div class="hero__text">Round Rock<br />Yard Maintenance</div>
+              <div class="hero__text">Round Rock<br /><strong>Yard Maintenance</strong></div>
+              
             </div>
               <div class="hero__description">Lorem Ipsum is simply dummy</div>
               <div class="hero__info">Lorem ipsum<br />Lorem</div>
@@ -23,66 +25,32 @@
     </div>
 <!-- Services -->
     <div class="services">Services</div>
+    
     <div class="services__heading">
-      <div class="services__content">
-        <div class="services__item">
-          <div class="services__card">
-            <img
-              loading="lazy"
-              src="./img/1.png"
-              class="services__img"
-            />
-            <div class="services__description">
-              <div class="services__title">Lorem Ipsum</div>
-              <div class="services__text">
-                Lorem Ipsum is simply dummy text of the printing and typesetting
-                industry. Lorem Ipsum has been the industry's standard dummy
-                text ever since the 1500s, when an unknown printer took a galley
-                of type and scrambled
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="services__item">
-          <div class="services__card">
-            <img
-              loading="lazy"
-              src="./img/2.png"
-              class="services__img"
-            />
-            <div class="services__description">
-              <div class="services__title">Lorem Ipsum</div>
-              <div class="services__text">
-                Lorem Ipsum is simply dummy text of the printing and typesetting
-                industry. Lorem Ipsum has been the industry's standard dummy
-                text ever since the 1500s, when an unknown printer took a galley
-                of type and scrambled
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="services__item">
-          <div class="services__card">
-            <img
-              loading="lazy"
-              src="./img/3.png"
-              class="services__img"
-            />
-            <div class="services__description">
-              <div class="services__title">Lorem Ipsum</div>
-              <div class="services__text">
-                Lorem Ipsum is simply dummy text of the printing and typesetting
-                industry. Lorem Ipsum has been the industry's standard dummy
-                text ever since the 1500s, when an unknown printer took a galley
-                of type and scrambled
-              </div>
-            </div>
+    <div class="services__content">
+      <!-- Стрілки для перегляду назад та вперед -->
+      <div class="slider__arrow slider__arrow--prev" @click="prevSlide">&lt;</div>
+
+      <div class="services__item">
+        <div class="services__card">
+          <img
+            loading="lazy"
+            :src="cards[currentIndex].img"
+            class="services__img"
+          />
+          <div class="services__description">
+            <div class="services__title">{{ cards[currentIndex].title }}</div>
+            <div class="services__text">{{ cards[currentIndex].text }}</div>
           </div>
         </div>
       </div>
+
+      <!-- Стрілки для перегляду назад та вперед -->
+      <div class="slider__arrow slider__arrow--next" @click="nextSlide">&gt;</div>
     </div>
-    
-          <div class="help__button">Help Me</div>
+  </div>
+ <!-- About -->
+          <div class="help__button" style="margin-top: 50px;">Help Me</div>
           <div class="about__title">About Us</div>
     <div class="about__content">
       <img
@@ -91,8 +59,7 @@
         class="about__img"
       />
       <div class="about__columns">
-       
-          <div class="div-29">
+          <div class="about__section">
             <div class="about__column">
               <div class="about__description">
                 Lorem Ipsum is simply dummy text of the printing and typesetting
@@ -135,29 +102,30 @@
                 Lorem Ipsum.
               </div>
             </div>
-         
+          
         </div>
-        <div class="help__button">Help Me</div>
+        <div class="help__button" style="margin-top: 50px;">Help Me</div>
       </div>
     </div>
-    <div class="div-34">Testymonials</div>
-    <div class="div-35">
-      <div class="div-36">
-        <div class="column-6">
-          <div class="div-37">
-            <div class="div-38">
-              <div class="div-39">
-                <div class="column-7">
+
+     <!-- Testymonials -->
+    <div class="testimonials">Testymonials</div>
+    <div class="testimonials__container">
+      <div class="testimonials__item">
+        <div class="testimonials__content">
+          <div class="testimonial-inner">
+              <div class="testimonial-avatar">
+                <div class="testimonials__avatar">
                   <img
                     loading="lazy"
-                    srcSet="..."
-                    class="img-6"
+                    src="./img/avatar.jpg"
+                    class="testimonials__avatar-img"
                   />
                 </div>
-                <div class="column-8">
-                  <div class="div-40">
-                    <div class="div-41">Courtney Henry</div>
-                    <div class="div-42">
+                <div class="testimonial-person">
+                  <div class="testimonials__text">
+                    <div class="testimonials__name">Courtney Henry</div>
+                    <div class="testimonials__description">
                       Lorem Ipsum is simply dummy text of the printing and
                       typesetting industry. Lorem Ipsum has been the industry's
                       standard dummy text ever since the 1500s, when an unknown
@@ -166,30 +134,29 @@
                     </div>
                   </div>
                 </div>
-              </div>
-            </div>
+              </div>  
             <img
               loading="lazy"
               src="https://cdn.builder.io/api/v1/image/assets/TEMP/1212da89-faf3-4a55-9851-7a6d0c3036b2?"
-              class="img-7"
+              class="testimonials__image"
             />
           </div>
         </div>
-        <div class="column-9">
-          <div class="div-43">
-            <div class="div-44">
-              <div class="div-45">
-                <div class="column-10">
+
+        <div class="testimonials__content">
+          <div class="testimonial-inner">
+              <div class="testimonial-avatar">
+                <div class="testimonials__avatar">
                   <img
                     loading="lazy"
-                    srcSet="..."
-                    class="img-8"
+                    src="./img/avatar.jpg"
+                    class="testimonials__avatar-img"
                   />
                 </div>
-                <div class="column-11">
-                  <div class="div-46">
-                    <div class="div-47">Courtney Henry</div>
-                    <div class="div-48">
+                <div class="testimonial-person">
+                  <div class="testimonials__text">
+                    <div class="testimonials__name">Courtney Henry</div>
+                    <div class="testimonials__description">
                       Lorem Ipsum is simply dummy text of the printing and
                       typesetting industry. Lorem Ipsum has been the industry's
                       standard dummy text ever since the 1500s, when an unknown
@@ -198,139 +165,195 @@
                     </div>
                   </div>
                 </div>
-              </div>
-            </div>
+              </div>  
             <img
               loading="lazy"
-              src="https://cdn.builder.io/api/v1/image/assets/TEMP/df914073-3cbd-4060-8815-d28ee04fce7a?"
-              class="img-9"
+              src="https://cdn.builder.io/api/v1/image/assets/TEMP/1212da89-faf3-4a55-9851-7a6d0c3036b2?"
+              class="testimonials__image"
+            />
+          </div>
+        </div>
+      </div>
+    
+    
+      <div class="testimonials__item">
+        <div class="testimonials__content">
+          <div class="testimonial-inner">
+              <div class="testimonial-avatar">
+                <div class="testimonials__avatar">
+                  <img
+                    loading="lazy"
+                    src="./img/avatar.jpg"
+                    class="testimonials__avatar-img"
+                  />
+                </div>
+                <div class="testimonial-person">
+                  <div class="testimonials__text">
+                    <div class="testimonials__name">Courtney Henry</div>
+                    <div class="testimonials__description">
+                      Lorem Ipsum is simply dummy text of the printing and
+                      typesetting industry. Lorem Ipsum has been the industry's
+                      standard dummy text ever since the 1500s, when an unknown
+                      printer took a galley of type and scrambled it to make a
+                      type specimen book
+                    </div>
+                  </div>
+                </div>
+              </div>  
+            <img
+              loading="lazy"
+              src="https://cdn.builder.io/api/v1/image/assets/TEMP/1212da89-faf3-4a55-9851-7a6d0c3036b2?"
+              class="testimonials__image"
+            />
+          </div>
+        </div>
+        <div class="testimonials__content">
+          <div class="testimonial-inner">
+              <div class="testimonial-avatar">
+                <div class="testimonials__avatar">
+                  <img
+                    loading="lazy"
+                    src="./img/avatar.jpg"
+                    class="testimonials__avatar-img"
+                  />
+                </div>
+                <div class="testimonial-person">
+                  <div class="testimonials__text">
+                    <div class="testimonials__name">Courtney Henry</div>
+                    <div class="testimonials__description">
+                      Lorem Ipsum is simply dummy text of the printing and
+                      typesetting industry. Lorem Ipsum has been the industry's
+                      standard dummy text ever since the 1500s, when an unknown
+                      printer took a galley of type and scrambled it to make a
+                      type specimen book
+                    </div>
+                  </div>
+                </div>
+              </div>  
+            <img
+              loading="lazy"
+              src="https://cdn.builder.io/api/v1/image/assets/TEMP/1212da89-faf3-4a55-9851-7a6d0c3036b2?"
+              class="testimonials__image"
             />
           </div>
         </div>
       </div>
     </div>
-    <div class="div-49">
-      <div class="div-50">
-        <div class="column-12">
-          <div class="div-51">
-            <div class="div-52">
-              <div class="div-53">
-                <div class="column-13">
-                  <img
-                    loading="lazy"
-                    srcSet="..."
-                    class="img-10"
-                  />
-                </div>
-                <div class="column-14">
-                  <div class="div-54">
-                    <div class="div-55">Courtney Henry</div>
-                    <div class="div-56">
-                      Lorem Ipsum is simply dummy text of the printing and
-                      typesetting industry. Lorem Ipsum has been the industry's
-                      standard dummy text ever since the 1500s, when an unknown
-                      printer took a galley of type and scrambled it to make a
-                      type specimen book
-                    </div>
-                  </div>
-                </div>
+    <div class="contact">
+      <div class="contact__container">
+        <div class="contact__item">Contact Us</div>
+        <div class="contact__content">
+          <div class="contact-header">
+            <div class="contact-column">
+              <div class="contact__form">
+                <input class="contact__name" type="text" placeholder="name">
+                <input class="contact__email" type="text" placeholder="email">
+                <input class="contact__phone" type="number" placeholder="phone">
+                <div class="help__button" style="margin-top: 14px;">Submit</div>
               </div>
             </div>
-            <img
-              loading="lazy"
-              src="https://cdn.builder.io/api/v1/image/assets/TEMP/17d31eb1-8d66-4bbc-8d1f-c61e42c3324c?"
-              class="img-11"
-            />
-          </div>
-        </div>
-        <div class="column-15">
-          <div class="div-57">
-            <div class="div-58">
-              <div class="div-59">
-                <div class="column-16">
-                  <img
-                    loading="lazy"
-                    srcSet="..."
-                    class="img-12"
-                  />
-                </div>
-                <div class="column-17">
-                  <div class="div-60">
-                    <div class="div-61">Courtney Henry</div>
-                    <div class="div-62">
-                      Lorem Ipsum is simply dummy text of the printing and
-                      typesetting industry. Lorem Ipsum has been the industry's
-                      standard dummy text ever since the 1500s, when an unknown
-                      printer took a galley of type and scrambled it to make a
-                      type specimen book
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <img
-              loading="lazy"
-              src="https://cdn.builder.io/api/v1/image/assets/TEMP/6229d917-14b5-48cb-b85d-0cc79ea42790?"
-              class="img-13"
-            />
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="div-63">
-      <div class="div-64">
-        <div class="div-65">Contact Us</div>
-        <div class="div-66">
-          <div class="div-67">
-            <div class="column-18">
-              <div class="div-68">
-                <div class="div-69"></div>
-                <div class="div-70"></div>
-                <div class="div-71"></div>
-                <div class="div-72"></div>
-              </div>
-            </div>
-            <div class="column-19">
-              <div class="div-73">
-                <div class="div-74">
+            <div class="contact__side__bar">
+              <div class="contact-container">
+                <div class="contact-info">
                   <img
                     loading="lazy"
                     src="https://cdn.builder.io/api/v1/image/assets/TEMP/6b3d88ec-a56d-4913-bb60-5113f533c60d?"
                     class="img-14"
                   />
-                  <div class="div-75">test@gmail.com</div>
+                  <div class="contact-detail">test@gmail.com</div>
                 </div>
-                <div class="div-76">
+                <div class="contact-info">
                   <img
                     loading="lazy"
                     src="https://cdn.builder.io/api/v1/image/assets/TEMP/aee4466b-d947-4f20-ada0-9eb0719f3ca9?"
                     class="img-15"
                   />
-                  <div class="div-77">(303) 555-0105</div>
+                  <div class="contact-detail">(XXX) XXX-XXXX</div>
                 </div>
-                <div class="div-78">
+                <div class="contact-info">
                   <img
                     loading="lazy"
-                    src="https://cdn.builder.io/api/v1/image/assets/TEMP/c263ddeb-4f5d-42d9-80ed-81b2fb0ee7cd?"
+                    src="https://cdn.builder.io/api/v1/image/assets/TEMP/c6e270cf-4fd1-4917-b00b-e060fe8163f1?apiKey=0c3d759e78b14f51937ec6585e1afc46&"
                     class="img-16"
                   />
-                  <div class="div-79">
-                    2715 Ash Dr. San Jose, South Dakota 83475
+                  <div class="contact-detail">
+                    6666 Ash Dr. San Potebnya, South Ukraine 616
                   </div>
                 </div>
               </div>
             </div>
+            
           </div>
         </div>
       </div>
     </div>
-    <div class="div-80"></div>
+    <div class="footer"> Created by Bohdan Panasiuk </div>
   </div>
 </template>
+
+<script>
+export default {
+  data() {
+    return {
+      currentIndex: 0,
+      cards: [
+        {
+          img: "./img/1.png",
+          title: "Lorem Ipsum 1",
+          text: "Text for card 1",
+        },
+        {
+          img: "./img/2.png",
+          title: "Lorem Ipsum 2",
+          text: "Text for card 2",
+        },
+         {
+          img: "./img/3.png",
+          title: "Lorem Ipsum 3",
+          text: "Text for card 3",
+        },
+      ],
+    };
+  },
+
+  methods: {
+    prevSlide() {
+      this.currentIndex = (this.currentIndex - 1 + this.cards.length) % this.cards.length;
+    },
+
+    nextSlide() {
+      this.currentIndex = (this.currentIndex + 1) % this.cards.length;
+    },
+  },
+};
+
+</script>
 
 
 
 <style scoped>
+
+.services__heading {
+  position: relative;
+}
+
+.slider__arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 24px;
+  cursor: pointer;
+  color: #000; /* Колір стрілок */
+}
+
+.slider__arrow--prev {
+  left: 10px;
+}
+
+.slider__arrow--next {
+  right: 10px;
+}
+
 .div {
   background-color: #fff;
   display: flex;
@@ -371,6 +394,7 @@
   width: 983px;
   max-width: 100%;
   flex-direction: column;
+  
 }
 
 @media (max-width: 991px) {
@@ -382,9 +406,13 @@
 .hero__block {
   align-self: center;
   display: flex;
-  width: 463px;
+  width: 363px;
   max-width: 100%;
+  
   gap: 20px;
+  margin-top: 58px;
+  
+  
 }
 
 @media (max-width: 991px) {
@@ -398,6 +426,7 @@
   object-fit: contain;
   object-position: center;
   width: 78px;
+  
   overflow: hidden;
   max-width: 100%;
 }
@@ -419,7 +448,7 @@
   border-radius: 59px;
   background-color: rgba(0, 0, 0, 0.5);
   align-self: center;
-  margin-top: 56px;
+  margin-top: 50px;
   width: 374px;
   max-width: 100%;
   align-items: center;
@@ -436,13 +465,14 @@
 
 .hero__info {
   color: #FFF;
-text-align: center;
-text-shadow: 0px 0px 40px rgba(0, 0, 0, 0.50);
-font-family: Poppins;
-font-size: 144px;
-font-style: normal;
-font-weight: 900;
-line-height: 134.5px; /* 93.403% */
+  text-align: center;
+  text-shadow: 0px 0px 40px rgba(0, 0, 0, 0.50);
+  font-family: Poppins;
+  font-size: 144px;
+  font-style: normal;
+  font-weight: 900;
+  line-height: 134.5px; /* 93.403% */
+  margin-top: 17px;
 }
 
 @media (max-width: 991px) {
@@ -466,6 +496,15 @@ line-height: 134.5px; /* 93.403% */
   align-items: center;
   padding: 26px 20px;
   font: 700 18px Poppins, sans-serif;
+  cursor: pointer;
+}
+
+.help__button:hover {
+  background: radial-gradient(50% 50% at 50% 50%, #48924f 0%, #48924f 100%);
+  color: #fff;
+  box-shadow: 0px 0px 30px 0px rgba(16, 51, 30, 0.7);
+  
+  transition: all 0.7s ease-in-out;
 }
 
 @media (max-width: 991px) {
@@ -479,7 +518,7 @@ line-height: 134.5px; /* 93.403% */
   color: var(--Gray-3, #828282);
   text-align: center;
   align-self: center;
-  margin-top: 88px;
+  margin-top: 70px;
   white-space: nowrap;
   font: 800 64px Poppins, sans-serif;
 }
@@ -491,6 +530,8 @@ line-height: 134.5px; /* 93.403% */
   }
 }
 .services__heading {
+  display: flex;
+  justify-content: center;
   align-self: center;
   margin-top: 76px;
   width: 1199px;
@@ -504,7 +545,10 @@ line-height: 134.5px; /* 93.403% */
 }
 .services__content {
   gap: 20px;
+    width: 100%;
   display: flex;
+  align-items: center;
+  justify-content: center;
 }
 @media (max-width: 991px) {
   .services__content {
@@ -512,7 +556,7 @@ line-height: 134.5px; /* 93.403% */
     align-items: stretch;
     gap: 0px;
   }
-}
+} 
 .services__item {
   display: flex;
   flex-direction: column;
@@ -583,7 +627,7 @@ line-height: 134.5px; /* 93.403% */
   color: var(--Gray-3, #828282);
   text-align: center;
   align-self: center;
-  margin-top: 93px;
+  margin-top: 70px;
   white-space: nowrap;
   font: 800 64px Poppins, sans-serif;
 }
@@ -606,7 +650,7 @@ line-height: 134.5px; /* 93.403% */
   margin-top: 76px;
   width: 100%;
   align-items: center;
-  padding: 158px 20px 50px;
+  
 }
 @media (max-width: 991px) {
   .about__content {
@@ -621,14 +665,15 @@ line-height: 134.5px; /* 93.403% */
   width: 1195px;
   max-width: 100%;
   flex-direction: column;
+  padding: 158px 20px 50px;
 }
 
-.div-29 {
+.about__section {
   gap: 20px;
   display: flex;
 }
 @media (max-width: 991px) {
-  .div-29 {
+  .about__section {
     flex-direction: column;
     align-items: stretch;
     gap: 0px;
@@ -657,110 +702,61 @@ line-height: 134.5px; /* 93.403% */
     width: 100%;
   }
 }
-.div-31 {
-  color: #fff;
-  text-align: center;
-  font: 600 18px/133% Poppins, sans-serif;
-}
-@media (max-width: 991px) {
-  .div-31 {
-    margin-top: 40px;
-  }
-}
-.column-5 {
-  display: flex;
-  flex-direction: column;
-  line-height: normal;
-  width: 33%;
-  margin-left: 20px;
-}
-@media (max-width: 991px) {
-  .column-5 {
-    width: 100%;
-  }
-}
-.div-32 {
-  color: #fff;
-  text-align: center;
-  font: 600 18px/133% Poppins, sans-serif;
-}
-@media (max-width: 991px) {
-  .div-32 {
-    margin-top: 40px;
-  }
-}
-.div-33 {
-  color: #6cb981;
-  text-align: center;
-  white-space: nowrap;
-  border-radius: 35px;
-  box-shadow: 0px 16px 30px 0px rgba(50, 175, 100, 0.15);
-  background-color: #fff;
-  align-self: center;
-  margin-top: 51px;
-  width: 180px;
-  max-width: 100%;
-  align-items: center;
-  padding: 26px 20px;
-  font: 700 18px Poppins, sans-serif;
-}
-@media (max-width: 991px) {
-  .div-33 {
-    white-space: initial;
-    margin-top: 40px;
-  }
-}
-.div-34 {
+
+
+
+
+.testimonials {
   color: var(--Gray-3, #828282);
   text-align: center;
   align-self: center;
-  margin-top: 88px;
+  margin-top: 70px;
   white-space: nowrap;
   font: 800 64px Poppins, sans-serif;
 }
 @media (max-width: 991px) {
-  .div-34 {
+  .testimonials {
     max-width: 100%;
     font-size: 40px;
     margin-top: 40px;
     white-space: initial;
   }
 }
-.div-35 {
+.testimonials__container {
   align-self: center;
   margin-top: 79px;
   width: 1199px;
   max-width: 100%;
 }
 @media (max-width: 991px) {
-  .div-35 {
+  .testimonials__container {
     margin-top: 40px;
   }
 }
-.div-36 {
+.testimonials__item {
   gap: 20px;
   display: flex;
 }
 @media (max-width: 991px) {
-  .div-36 {
+  .testimonials__item {
     flex-direction: column;
     align-items: stretch;
     gap: 0px;
   }
 }
-.column-6 {
+.testimonials__content {
   display: flex;
   flex-direction: column;
   line-height: normal;
   width: 50%;
-  margin-left: 0px;
+  margin-left: 20px;
 }
 @media (max-width: 991px) {
-  .column-6 {
+  .testimonials__content {
     width: 100%;
   }
 }
-.div-37 {
+.testimonial-inner {
   border-radius: 40px;
   border: 1px solid #6cb981;
   background-color: #fff;
@@ -768,35 +764,30 @@ line-height: 134.5px; /* 93.403% */
   flex-grow: 1;
   flex-direction: column;
   width: 100%;
-  margin: 0 auto;
+  margin: 0 auto 45px;
+  
   padding: 30px;
 }
 @media (max-width: 991px) {
-  .div-37 {
+  .testimonial-inner {
     max-width: 100%;
     margin-top: 40px;
     padding: 0 20px;
   }
 }
-.div-38 {
-}
-@media (max-width: 991px) {
-  .div-38 {
-    max-width: 100%;
-  }
-}
-.div-39 {
+
+.testimonial-avatar {
   gap: 20px;
   display: flex;
 }
 @media (max-width: 991px) {
-  .div-39 {
+  .testimonial-avatar {
     flex-direction: column;
     align-items: stretch;
     gap: 0px;
   }
 }
-.column-7 {
+.testimonials__avatar {
   display: flex;
   flex-direction: column;
   line-height: normal;
@@ -804,11 +795,11 @@ line-height: 134.5px; /* 93.403% */
   margin-left: 0px;
 }
 @media (max-width: 991px) {
-  .column-7 {
+  .testimonials__avatar {
     width: 100%;
   }
 }
-.img-6 {
+.testimonials__avatar-img {
   aspect-ratio: 1;
   object-fit: contain;
   object-position: center;
@@ -818,11 +809,11 @@ line-height: 134.5px; /* 93.403% */
   max-width: 100%;
 }
 @media (max-width: 991px) {
-  .img-6 {
+  .testimonials__avatar-img {
     margin-top: 14px;
   }
 }
-.column-8 {
+.testimonial-person {
   display: flex;
   flex-direction: column;
   line-height: normal;
@@ -830,44 +821,44 @@ line-height: 134.5px; /* 93.403% */
   margin-left: 20px;
 }
 @media (max-width: 991px) {
-  .column-8 {
+  .testimonial-person {
     width: 100%;
   }
 }
-.div-40 {
+.testimonials__text {
   display: flex;
   margin-top: 4px;
   flex-grow: 1;
   flex-direction: column;
 }
 @media (max-width: 991px) {
-  .div-40 {
+  .testimonials__text {
     max-width: 100%;
     margin-top: 18px;
   }
 }
-.div-41 {
+.testimonials__name {
   color: #6cb981;
   white-space: nowrap;
   font: 700 18px/122% Poppins, sans-serif;
 }
 @media (max-width: 991px) {
-  .div-41 {
+  .testimonials__name {
     max-width: 100%;
     white-space: initial;
   }
 }
-.div-42 {
+.testimonials__description {
   color: #0d4c14;
   margin-top: 10px;
   font: 400 14px/157% Poppins, sans-serif;
 }
 @media (max-width: 991px) {
-  .div-42 {
+  .testimonials__description {
     max-width: 100%;
   }
 }
-.img-7 {
+.testimonials__image {
   aspect-ratio: 6.33;
   object-fit: contain;
   object-position: center;
@@ -878,491 +869,69 @@ line-height: 134.5px; /* 93.403% */
   margin: 12px 0 0 94px;
 }
 @media (max-width: 991px) {
-  .img-7 {
+  .testimonials__image {
     margin-left: 10px;
   }
 }
-.column-9 {
-  display: flex;
-  flex-direction: column;
-  line-height: normal;
-  width: 50%;
-  margin-left: 20px;
-}
-@media (max-width: 991px) {
-  .column-9 {
-    width: 100%;
-  }
-}
-.div-43 {
-  border-radius: 40px;
-  border: 1px solid #6cb981;
-  background-color: #fff;
-  display: flex;
-  flex-grow: 1;
-  flex-direction: column;
-  width: 100%;
-  margin: 0 auto;
-  padding: 30px;
-}
-@media (max-width: 991px) {
-  .div-43 {
-    max-width: 100%;
-    margin-top: 40px;
-    padding: 0 20px;
-  }
-}
-.div-44 {
-}
-@media (max-width: 991px) {
-  .div-44 {
-    max-width: 100%;
-  }
-}
-.div-45 {
-  gap: 20px;
-  display: flex;
-}
-@media (max-width: 991px) {
-  .div-45 {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 0px;
-  }
-}
-.column-10 {
-  display: flex;
-  flex-direction: column;
-  line-height: normal;
-  width: 16%;
-  margin-left: 0px;
-}
-@media (max-width: 991px) {
-  .column-10 {
-    width: 100%;
-  }
-}
-.img-8 {
-  aspect-ratio: 1;
-  object-fit: contain;
-  object-position: center;
-  width: 80px;
-  overflow: hidden;
-  border-radius: 50%;
-  max-width: 100%;
-}
-@media (max-width: 991px) {
-  .img-8 {
-    margin-top: 14px;
-  }
-}
-.column-11 {
-  display: flex;
-  flex-direction: column;
-  line-height: normal;
-  width: 84%;
-  margin-left: 20px;
-}
-@media (max-width: 991px) {
-  .column-11 {
-    width: 100%;
-  }
-}
-.div-46 {
-  display: flex;
-  margin-top: 4px;
-  flex-grow: 1;
-  flex-direction: column;
-}
-@media (max-width: 991px) {
-  .div-46 {
-    max-width: 100%;
-    margin-top: 18px;
-  }
-}
-.div-47 {
-  color: #6cb981;
-  white-space: nowrap;
-  font: 700 18px/122% Poppins, sans-serif;
-}
-@media (max-width: 991px) {
-  .div-47 {
-    max-width: 100%;
-    white-space: initial;
-  }
-}
-.div-48 {
-  color: #0d4c14;
-  margin-top: 10px;
-  font: 400 14px/157% Poppins, sans-serif;
-}
-@media (max-width: 991px) {
-  .div-48 {
-    max-width: 100%;
-  }
-}
-.img-9 {
-  aspect-ratio: 6.33;
-  object-fit: contain;
-  object-position: center;
-  width: 114px;
-  overflow: hidden;
-  align-self: start;
-  max-width: 100%;
-  margin: 12px 0 0 94px;
-}
-@media (max-width: 991px) {
-  .img-9 {
-    margin-left: 10px;
-  }
-}
-.div-49 {
-  align-self: center;
-  margin-top: 45px;
-  width: 1199px;
-  max-width: 100%;
-}
-@media (max-width: 991px) {
-  .div-49 {
-    margin-top: 40px;
-  }
-}
-.div-50 {
-  gap: 20px;
-  display: flex;
-}
-@media (max-width: 991px) {
-  .div-50 {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 0px;
-  }
-}
-.column-12 {
-  display: flex;
-  flex-direction: column;
-  line-height: normal;
-  width: 50%;
-  margin-left: 0px;
-}
-@media (max-width: 991px) {
-  .column-12 {
-    width: 100%;
-  }
-}
-.div-51 {
-  border-radius: 40px;
-  border: 1px solid #6cb981;
-  background-color: #fff;
-  display: flex;
-  flex-grow: 1;
-  flex-direction: column;
-  width: 100%;
-  margin: 0 auto;
-  padding: 30px;
-}
-@media (max-width: 991px) {
-  .div-51 {
-    max-width: 100%;
-    margin-top: 40px;
-    padding: 0 20px;
-  }
-}
-.div-52 {
-}
-@media (max-width: 991px) {
-  .div-52 {
-    max-width: 100%;
-  }
-}
-.div-53 {
-  gap: 20px;
-  display: flex;
-}
-@media (max-width: 991px) {
-  .div-53 {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 0px;
-  }
-}
-.column-13 {
-  display: flex;
-  flex-direction: column;
-  line-height: normal;
-  width: 16%;
-  margin-left: 0px;
-}
-@media (max-width: 991px) {
-  .column-13 {
-    width: 100%;
-  }
-}
-.img-10 {
-  aspect-ratio: 1;
-  object-fit: contain;
-  object-position: center;
-  width: 80px;
-  overflow: hidden;
-  border-radius: 50%;
-  max-width: 100%;
-}
-@media (max-width: 991px) {
-  .img-10 {
-    margin-top: 14px;
-  }
-}
-.column-14 {
-  display: flex;
-  flex-direction: column;
-  line-height: normal;
-  width: 84%;
-  margin-left: 20px;
-}
-@media (max-width: 991px) {
-  .column-14 {
-    width: 100%;
-  }
-}
-.div-54 {
-  display: flex;
-  margin-top: 4px;
-  flex-grow: 1;
-  flex-direction: column;
-}
-@media (max-width: 991px) {
-  .div-54 {
-    max-width: 100%;
-    margin-top: 18px;
-  }
-}
-.div-55 {
-  color: #6cb981;
-  white-space: nowrap;
-  font: 700 18px/122% Poppins, sans-serif;
-}
-@media (max-width: 991px) {
-  .div-55 {
-    max-width: 100%;
-    white-space: initial;
-  }
-}
-.div-56 {
-  color: #0d4c14;
-  margin-top: 10px;
-  font: 400 14px/157% Poppins, sans-serif;
-}
-@media (max-width: 991px) {
-  .div-56 {
-    max-width: 100%;
-  }
-}
-.img-11 {
-  aspect-ratio: 6.33;
-  object-fit: contain;
-  object-position: center;
-  width: 114px;
-  overflow: hidden;
-  align-self: start;
-  max-width: 100%;
-  margin: 12px 0 0 94px;
-}
-@media (max-width: 991px) {
-  .img-11 {
-    margin-left: 10px;
-  }
-}
-.column-15 {
-  display: flex;
-  flex-direction: column;
-  line-height: normal;
-  width: 50%;
-  margin-left: 20px;
-}
-@media (max-width: 991px) {
-  .column-15 {
-    width: 100%;
-  }
-}
-.div-57 {
-  border-radius: 40px;
-  border: 1px solid #6cb981;
-  background-color: #fff;
-  display: flex;
-  flex-grow: 1;
-  flex-direction: column;
-  width: 100%;
-  margin: 0 auto;
-  padding: 30px;
-}
-@media (max-width: 991px) {
-  .div-57 {
-    max-width: 100%;
-    margin-top: 40px;
-    padding: 0 20px;
-  }
-}
-.div-58 {
-}
-@media (max-width: 991px) {
-  .div-58 {
-    max-width: 100%;
-  }
-}
-.div-59 {
-  gap: 20px;
-  display: flex;
-}
-@media (max-width: 991px) {
-  .div-59 {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 0px;
-  }
-}
-.column-16 {
-  display: flex;
-  flex-direction: column;
-  line-height: normal;
-  width: 16%;
-  margin-left: 0px;
-}
-@media (max-width: 991px) {
-  .column-16 {
-    width: 100%;
-  }
-}
-.img-12 {
-  aspect-ratio: 1;
-  object-fit: contain;
-  object-position: center;
-  width: 80px;
-  overflow: hidden;
-  border-radius: 50%;
-  max-width: 100%;
-}
-@media (max-width: 991px) {
-  .img-12 {
-    margin-top: 14px;
-  }
-}
-.column-17 {
-  display: flex;
-  flex-direction: column;
-  line-height: normal;
-  width: 84%;
-  margin-left: 20px;
-}
-@media (max-width: 991px) {
-  .column-17 {
-    width: 100%;
-  }
-}
-.div-60 {
-  display: flex;
-  margin-top: 4px;
-  flex-grow: 1;
-  flex-direction: column;
-}
-@media (max-width: 991px) {
-  .div-60 {
-    max-width: 100%;
-    margin-top: 18px;
-  }
-}
-.div-61 {
-  color: #6cb981;
-  white-space: nowrap;
-  font: 700 18px/122% Poppins, sans-serif;
-}
-@media (max-width: 991px) {
-  .div-61 {
-    max-width: 100%;
-    white-space: initial;
-  }
-}
-.div-62 {
-  color: #0d4c14;
-  margin-top: 10px;
-  font: 400 14px/157% Poppins, sans-serif;
-}
-@media (max-width: 991px) {
-  .div-62 {
-    max-width: 100%;
-  }
-}
-.img-13 {
-  aspect-ratio: 6.33;
-  object-fit: contain;
-  object-position: center;
-  width: 114px;
-  overflow: hidden;
-  align-self: start;
-  max-width: 100%;
-  margin: 12px 0 0 94px;
-}
-@media (max-width: 991px) {
-  .img-13 {
-    margin-left: 10px;
-  }
-}
-.div-63 {
+
+.contact {
   background-color: #fcfcfc;
-  align-self: stretch;
+  align-items: center;
   display: flex;
   margin-top: 50px;
   width: 100%;
+  
   flex-direction: column;
   align-items: center;
   padding: 74px 20px 50px;
 }
 @media (max-width: 991px) {
-  .div-63 {
+  .contact {
     max-width: 100%;
     margin-top: 40px;
   }
 }
-.div-64 {
+.contact__container {
   display: flex;
   width: 786px;
   max-width: 100%;
   flex-direction: column;
   align-items: center;
 }
-.div-65 {
+.contact__item {
   color: var(--Gray-3, #828282);
   text-align: center;
   white-space: nowrap;
   font: 800 64px Poppins, sans-serif;
 }
 @media (max-width: 991px) {
-  .div-65 {
+  .contact__item {
     font-size: 40px;
     white-space: initial;
   }
 }
-.div-66 {
+.contact__content {
   align-self: stretch;
   margin-top: 96px;
 }
 @media (max-width: 991px) {
-  .div-66 {
+  .contact__content {
     max-width: 100%;
     margin-top: 40px;
   }
 }
-.div-67 {
+.contact-header {
   gap: 20px;
   display: flex;
 }
 @media (max-width: 991px) {
-  .div-67 {
+  .contact-header {
     flex-direction: column;
     align-items: stretch;
     gap: 0px;
   }
 }
-.column-18 {
+.contact-column {
   display: flex;
   flex-direction: column;
   line-height: normal;
@@ -1370,21 +939,30 @@ line-height: 134.5px; /* 93.403% */
   margin-left: 0px;
 }
 @media (max-width: 991px) {
-  .column-18 {
+  .contact-column {
     width: 100%;
   }
 }
-.div-68 {
+.contact__form {
   display: flex;
   flex-grow: 1;
   flex-direction: column;
+  text-align: center;
+}
+
+
+.contact__form input {
+    text-align: center;
+    width: 100%; 
+    box-sizing: border-box; 
+    margin-bottom: 10px; 
 }
 @media (max-width: 991px) {
-  .div-68 {
+  .contact__form {
     margin-top: 40px;
   }
 }
-.div-69 {
+.contact__name {
   border-radius: 61px;
   background-color: #9fdea9;
   align-self: stretch;
@@ -1392,16 +970,7 @@ line-height: 134.5px; /* 93.403% */
   height: 56px;
   flex-direction: column;
 }
-.div-70 {
-  border-radius: 61px;
-  background-color: #9fdea9;
-  align-self: stretch;
-  display: flex;
-  margin-top: 14px;
-  height: 56px;
-  flex-direction: column;
-}
-.div-71 {
+.contact__email {
   border-radius: 61px;
   background-color: #9fdea9;
   align-self: stretch;
@@ -1410,17 +979,17 @@ line-height: 134.5px; /* 93.403% */
   height: 56px;
   flex-direction: column;
 }
-.div-72 {
+.contact__phone {
   border-radius: 61px;
-  border: 3px solid #4db96b;
-  align-self: center;
+  background-color: #9fdea9;
+  align-self: stretch;
   display: flex;
   margin-top: 14px;
-  width: 168px;
   height: 56px;
   flex-direction: column;
 }
-.column-19 {
+
+.contact__side__bar {
   display: flex;
   flex-direction: column;
   line-height: normal;
@@ -1428,24 +997,28 @@ line-height: 134.5px; /* 93.403% */
   margin-left: 20px;
 }
 @media (max-width: 991px) {
-  .column-19 {
+  .contact__side__bar {
     width: 100%;
   }
 }
-.div-73 {
+.contact-container {
   display: flex;
-  margin-top: 30px;
   flex-direction: column;
+    justify-content: space-between;
+    max-width: 600px; /* Змініть значення на бажаний розмір контейнера */
+    margin: 0 auto;
 }
 @media (max-width: 991px) {
-  .div-73 {
+  .contact-container {
     margin-top: 40px;
   }
 }
-.div-74 {
+.contact-info {
+  align-self: end;
   display: flex;
-  justify-content: space-between;
+  margin-top: 30px;
   gap: 20px;
+  text-align: center;
 }
 .img-14 {
   aspect-ratio: 1;
@@ -1455,24 +1028,19 @@ line-height: 134.5px; /* 93.403% */
   overflow: hidden;
   max-width: 100%;
 }
-.div-75 {
+.contact-detail {
   color: var(--Gray-1, #333);
   align-self: center;
   white-space: nowrap;
-  margin: auto 0;
+  margin-top: 10px;
   font: 500 14px TT Hoves, sans-serif;
 }
 @media (max-width: 991px) {
-  .div-75 {
+  .contact-detail {
     white-space: initial;
   }
 }
-.div-76 {
-  display: flex;
-  margin-top: 30px;
-  justify-content: space-between;
-  gap: 20px;
-}
+
 .img-15 {
   aspect-ratio: 1;
   object-fit: contain;
@@ -1481,24 +1049,8 @@ line-height: 134.5px; /* 93.403% */
   overflow: hidden;
   max-width: 100%;
 }
-.div-77 {
-  color: var(--Gray-1, #333);
-  align-self: center;
-  white-space: nowrap;
-  margin: auto 0;
-  font: 500 14px TT Hoves, sans-serif;
-}
-@media (max-width: 991px) {
-  .div-77 {
-    white-space: initial;
-  }
-}
-.div-78 {
-  display: flex;
-  margin-top: 30px;
-  justify-content: space-between;
-  gap: 20px;
-}
+
+
 .img-16 {
   aspect-ratio: 1;
   object-fit: contain;
@@ -1507,28 +1059,19 @@ line-height: 134.5px; /* 93.403% */
   overflow: hidden;
   max-width: 100%;
 }
-.div-79 {
-  color: var(--Gray-1, #333);
-  align-self: center;
-  white-space: nowrap;
-  margin: auto 0;
-  font: 500 14px TT Hoves, sans-serif;
-}
-@media (max-width: 991px) {
-  .div-79 {
-    white-space: initial;
-  }
-}
-.div-80 {
+
+.footer {
   background-color: #324b29;
   align-self: stretch;
   display: flex;
   min-height: 145px;
   width: 100%;
   flex-direction: column;
+  text-align: center;
+  padding: 50px;
 }
 @media (max-width: 991px) {
-  .div-80 {
+  .footer {
     max-width: 100%;
   }
 }
