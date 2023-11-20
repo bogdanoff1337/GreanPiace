@@ -1,29 +1,32 @@
 <template>
     <div class="container">
         <form @submit.prevent="sendEmail">
-          <label>Name</label>
-          <input 
+         
+          <input class="contact__input"
             type="text" 
             v-model="name"
             name="name"
             placeholder="Your Name"
           >
-          <label>Email</label>
+         
           <input 
+          class="contact__input"
             type="email" 
             v-model="email"
             name="email"
             placeholder="Your Email"
             >
-          <label>Message</label>
-          <textarea 
+          
+          <input 
+          class="contact__input"
             name="message"
             v-model="message"
             cols="30" rows="5"
             placeholder="Message">
-          </textarea>
+         
           
-          <input type="submit" value="Send">
+          <button class="help__button" style="margin-top: 14px;" type="submit" value="Send">Send</button>
+
         </form>
     </div>
 </template>
@@ -66,42 +69,72 @@ export default {
 </script>
 
 <style scoped>
-* {box-sizing: border-box;}
-
-label {
-  float: left;
+.contact__input {
+    text-align: center;
+    width: 100%; 
+    box-sizing: border-box; 
+    margin-bottom: 10px; 
 }
-input[type=text], [type=email], textarea {
-  width: 100%;
-  padding: 12px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
-  margin-top: 6px;
-  margin-bottom: 16px;
-  resize: vertical;
+@media (max-width: 991px) {
+  .contact__input {
+    margin-top: 40px;
+  }
+}
+.contact__input {
+  border-radius: 61px;
+  background-color: #9fdea9;
+  align-self: stretch;
+  display: flex;
+  height: 56px;
+  flex-direction: column;
+}
+.contact__email {
+  border-radius: 61px;
+  background-color: #9fdea9;
+  align-self: stretch;
+  display: flex;
+  margin-top: 14px;
+  height: 56px;
+  flex-direction: column;
+}
+.contact__phone {
+  border-radius: 61px;
+  background-color: #9fdea9;
+  align-self: stretch;
+  display: flex;
+  margin-top: 14px;
+  height: 56px;
+  flex-direction: column;
 }
 
-input[type=submit] {
-  background-color: #4CAF50;
-  color: white;
-  padding: 12px 20px;
-  border: none;
-  border-radius: 4px;
+.help__button {
+  color: #48924f;
+  text-align: center;
+  white-space: nowrap;
+  border-radius: 35px;
+  background: radial-gradient(50% 50% at 50% 50%, #fff 0%, #f9f9f9 100%);
+  box-shadow: 0px 10px 50px 0px rgba(16, 51, 30, 0.5);
+  align-self: center;
+  margin-top: 100px;
+  width: 180px;
+  max-width: 100%;
+  align-items: center;
+  padding: 26px 20px;
+  font: 700 18px Poppins, sans-serif;
   cursor: pointer;
 }
-
-input[type=submit]:hover {
-  background-color: #b8c7b9;
+.help__button:hover {
+  background: radial-gradient(50% 50% at 50% 50%, #48924f 0%, #48924f 100%);
+  color: #fff;
+  box-shadow: 0px 0px 30px 0px rgba(16, 51, 30, 0.7);
+  
+  transition: all 0.7s ease-in-out;
 }
 
-.container {
-  display: block;
-  margin:auto;
-  text-align: center;
-  border-radius: 5px;
-  background-color: #f2f2f2;
-  padding: 20px;
-  width: 50%;
+@media (max-width: 991px) {
+  .help__button {
+    white-space: initial;
+    margin-top: 40px;
+  }
 }
 </style>

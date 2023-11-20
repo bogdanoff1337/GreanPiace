@@ -1032,7 +1032,7 @@ export default {
   display: flex;
   flex-direction: column;
     justify-content: space-between;
-    max-width: 600px; /* Змініть значення на бажаний розмір контейнера */
+    max-width: 600px;
     margin: 0 auto;
 }
 @media (max-width: 991px) {
