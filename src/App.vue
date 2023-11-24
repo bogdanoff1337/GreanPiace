@@ -13,7 +13,7 @@
             <div class="hero__block">
               <img
                 loading="lazy"
-                src="./img/lawncare.png"
+                src="./img/Lawncare.png"
                 class="hero__image-2"
               />
               <div class="hero__text">Round Rock<br /><strong>Yard Maintenance</strong></div>
