@@ -1,60 +1,42 @@
 <template>
-    <div class="container">
-        <form @submit.prevent="sendEmail">
-         
-          <input class="contact__input"
-            type="text" 
-            v-model="name"
-            name="name"
-            placeholder="Your Name"
-          >
-         
-          <input 
-          class="contact__input"
-            type="email" 
-            v-model="email"
-            name="email"
-            placeholder="Your Email"
-            >
-          
-          <input 
-          class="contact__input"
-            name="message"
-            v-model="message"
-            cols="30" rows="5"
-            placeholder="Message">
-         
-          
-          <button class="help__button" style="margin-top: 14px;" type="submit" value="Send">Send</button>
-
-        </form>
+  <div v-if="showModal" class="modal">
+    <div class="modal-content">
+    
+      <form @submit.prevent="sendEmail">
+        <input class="contact__input" type="text" v-model="name" name="name" placeholder="Your Name" />
+        <input class="contact__input" type="email" v-model="email" name="email" placeholder="Your Email" />
+        <input class="contact__input" name="message" v-model="message" cols="30" rows="5" placeholder="Message" />
+        <button class="help__button" style="margin-top: 14px;" type="submit" value="Send">Send</button>
+      </form>
+      <button class="close-button" @click="closeModal">&times;</button>
     </div>
+  </div>
 </template>
-
-<script>
-import emailjs from 'emailjs-com';
-
-export default {
-  name: 'ContactUs',
-  data() {
-    return {
-      name: '',
-      email: '',
-      message: ''
-    }
+  
+  <script>
+ import emailjs from 'emailjs-com';
+  
+  export default {
+    props: {
+    showModal: Boolean,
   },
-  computed: {
-    isSubmitDisabled() {
-      return !(this.name && this.email && this.message);
-    }
-  },
-  methods: {
-    sendEmail(e) {
-      try {
+  
+    data() {
+      return {
+        name: '',
+        email: '',
+        message: '',
+      
+       
+      };
+    },
+    methods: {
+      sendEmail(e) {
+        try {
         emailjs.sendForm('service_e8qpbdi', 'template_t5f4zec', e.target, 'GWRq3Vp1yZyGVjiIV', {
           name: this.name,
           email: this.email,
-          message: this.meessage
+          message: this.message
         })
 
       } catch (err) {
@@ -64,17 +46,61 @@ export default {
             throw err; // rethrow
            }
       }
-      // Reset form field
+      
       this.name = ''
       this.email = ''
       this.message = ''
+        this.closeModal(); 
+      },
+      openModal() {
+        this.isModalOpen = true; 
+      },
+      closeModal() {
+      this.$emit('close');
     },
+    }
+  };
+  </script>
+  
+  <style scoped>
+  .close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 20px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+  outline: none;
+}
+
+.modal {
+  display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  width: 50%;
+  transition: width 0.3s ease-in-out; /* Додайте плавний перехід */
+}
+
+@media (max-width: 991px) {
+  .modal-content {
+    width: 300px;
   }
 }
-</script>
-
-<style scoped>
-.contact__input {
+  .contact__input {
     text-align: center;
     width: 100%; 
     box-sizing: border-box; 
@@ -142,4 +168,5 @@ export default {
     margin-top: 40px;
   }
 }
-</style>
+  </style>
+  

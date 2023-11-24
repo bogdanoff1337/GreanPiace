@@ -21,9 +21,10 @@
             </div>
               <div class="hero__description">Lorem Ipsum is simply dummy</div>
               <div class="hero__info">Lorem ipsum<br />Lorem</div>
-              <div class="help__button">Help Me</div>
+              <div class="help__button"  @click="openModal">Help Me</div>
           </div>
     </div>
+    <contact-modal :showModal="isContactModalOpen" @close="closeModal" />
 <!-- Services -->
     <div class="services">Services</div>
     
@@ -55,7 +56,7 @@
     </div>
   </div>
  <!-- About -->
-          <div class="help__button" style="margin-top: 50px;">Help Me</div>
+          <div class="help__button" style="margin-top: 50px;" @click="openModal">Help Me</div>
           <div class="about__title">About Us</div>
     <div class="about__content">
       <img
@@ -109,7 +110,7 @@
             </div>
           
         </div>
-        <div class="help__button" style="margin-top: 50px;">Help Me</div>
+        <div class="help__button" style="margin-top: 50px;"  @click="openModal">Help Me</div>
       </div>
     </div>
 
@@ -298,31 +299,32 @@
 
 import Vuebar from 'vuebar';
 import ContactForm from './componets/ContactForm.vue'
-
+import ContactModal from './componets/ContactModal.vue';
 
 export default {
  
   data() {
     
     return {
+      isContactModalOpen: false,
       currentIndex: 0,
       cards: [
         {
           id: 1,
-          srcSet: "https://lh3.googleusercontent.com/pw/ADCreHfFTeZv9oZkHdPg5fTPMSoLbokq5lEYDnaNQa-xI52pEvEjRdUeNP0vo1LE3IK9-0rgMkXZjqaVL9_WvZEvFx-cil3-TbVNFYgm4sdk0ZDaTp3008cI36FMPcldPnHw4iQQqT-kxU7DAYAjJLQrWW5wt6Jl7a6hP50pyhDc8s_HFSnUJxxZZlF9xcZrho9msN3lpzDNAIJow0sqX_yn-49fkDQTxiGG6Wak-BoG9o6ayfwr9VVad90nDki557BnYLImgpcMHePnMfL_C63Bgf1mspq-XPlFDf56RP-_Bz43Q8HKS8VqjyA_DyQkBlfpXdX7dlj0Blr997hp3OKZgQSiD-LvPfdB_txOLFhct2I-6TxAY2b_rCarm4eDHBODQJz5kT4Fz6SVnXD4RHdPPBg_giaLXqSqcAq5Z2_R5cgPToHE2L1T0gE9vJlPySEhpeq7-Z58_BarT1FObqw9HTDFAoPcTWEqwb-gg8npmA9m6we6WripkP9AsUhPVfJDvoAgjfxhG_MO97gHeyE_DvQBvEGPvvk715wEPWS3XSoSe3psU6sZrnrTIqk_snlXeI021NhUxoe05mvx3mYJh8VRzT1DPB4Wp6y4bFEjz5nYj9MZY5sFeEqnTmrGKPOBb3Tkphf2WcH0X_z7KI9rXWadLiKXYMRGCSJhk_FV3t48Pc7UeNE-D3tmqoDQblS9pfIiBBXZe0GgX3KjFUVTt7FX_gO8VU2Xm_AKEucDhei7JH5-7AJeqli4gXr09eepNZUPmWtGebgMHYffCn7ey-1ij7HWR6mGg258SIMMyvOMSSftd-gYUs8h_1QL5mkzxWza-EMBZxw0M3zBKvagZX_aw171fOy73cWFKo8ip4045quonrmS8UpfrkOHog5yciRFRx7IhnzxSvZjHyXcaJ4KNPrGwuFMR7yQQNiODivHPcj8592euCN7OpHYdLw=w385-h290-s-no-gm?authuser=0",
+          srcSet: "https://lh3.googleusercontent.com/pw/ADCreHcP42N3rdeud-HKTSn7h3pUA3OVEuGEY9U66BsWlR7UJl_v5WxybJSqHAHNLNesbX2DRmKZ47Z3GGDuh2u8s2QVg-JgLPw1KqaB2ByJ3_h2d1zA8LWs0HUqS9BUPgsmv7S6hQAL2Dc9ypd9mkiNBpbcl53GPWKx9UcpkLjkkmggoYZkbWtZKvbc01QU11aIMEUV3WCce9BTuJ98I5XDU_nbKZv0V7MZw_j78faYzxUy0jIdwccHyK5a34A7SJQ73wcH2FdQH5zY__-TC8fdF0KnhMb82Q58IRb2q4yQRJZuzaHXN9y3pKxc2TQAEVOfByYIgaHwViPgNyzSxKFgB6asjSolEtvm32_x7lJ83ecNwRGBLYZZCuG1WyYoh3tAm17wI-THCbNtyRhaxPLZIVHiFk1_clUQz4oJ2uKVgB0Ql2VspqSQeAcQwrCQc6O-fY7UUDsrZ7r75J6kOsuqheurwdCzMXQWsQiVxBxEpEmH4fsOSyI-RUoAfi-VS-vyFGAqzUgwyjRKlnMHGXo_FpeKxqkc6U0pUgsKDg4QPhKVZKlBkgAF0bIjIPqne65-1q1RMtluYzzl_TXa7p3GzonRh7mF9krIZ9qHrbWagR5DE0uotKcn2-KktSBkMlfy_Ve2bh9EhYiBBoucauc--gOK3tso4PZNAXmA-5WkpM2rGPmInItk-VfxXTDTXDFiCMDj7M4Xb-9knv4rZO6zmhuYoPutySzfnSEl21kMhL6id0SGLbu14T0iOWisTJ7w0qyG9t2KRJB1C24bIatZskmLWx-hzUimS3s0RCecNV4kE1mqDTsYu-X9d2rnUzeE8q9ZBAxN7K9XlOtZFj290NrsYCOZLRF2TpiXVt5QUyKiU85yuTa2Q0O6idi2lG0geeR_4nBvuJA_-2-gjCFF-PpSzFNSjJZFDk7vCq62-gY=w385-h290-s-no-gm?authuser=0",
           title: "Lorem Ipsum 1",
           text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled",
         },
         {
           id: 2,
-          srcSet: "https://lh3.googleusercontent.com/pw/ADCreHcezph0NgoVNuuaD3Mtb6Wi0KsOFRzPdZj81iwrZvpPnY8vPtnz_0TaZXYH7YZWcmAyZsA5JwfuEG7T9QOvAG2isUDTXjrqF1Ex6SRRtooOhzVsDjmVs043osCjo7a_xbWIMJA2SsK0JD6EDgL6lwksmVKdKzYIhB7fsSyTvtlyGkdzcPR6hav0ZDacsmDoLjRLE6_e1x7XXkhL8MdWBSXUZhr6wf_aXW83xm9Oos3riCOoUs5atL50lJFGtZAYOMTBeoZ-2occwHpMRyt3EbE3JaH2dn9pURzvSE7bfgW8LcxUit4BZDRNL7Fx0pvqhbz6nYYs-NuIeGkrev1MlSPK9pCm3M6inImcxV9XWsao2LAi2YPksL9N2XoY01UcMBaf7qOjZGJbpeJHxeUJR9xejIc460zeTBF9zAn02_kpbmwaxVWRevwhy1CSTOoys9nGItEvGBF-0euWPZCQIOa1mtyiLGj1B719f_Q0Mjnlg02qnXSMQfFucxtZb5r2hASeZAOafbcHc9sfJ3v1wYvSf2YbfzV7geh_R1HNsTChe7zGqwLGLOfOZdruka3fsEs-g_rage-j97IWvLhG6Bba1F1kni5v-5a0t4YIEtDDzwtG50cKr3H5j7dQOiIbeunoU0osln2ochKFO2000axrKXQoeeXfulfTLpvKaOUw2i9zeNMs3vWp3FZb9hJuq2ah8AnT-NFGKSStkPapNqCVq55Ni_XiEpu5dLUDqevTjFUPAhNF9DTVusvBUsyA68RzXmlFueEU4T4ZugD3VbPQhz34v2dpzilDyqeXXXwCmVm9NbWsTGiwBdcoJp-wJ8f5vMPCT5ahx0dJVrs3c1oWKGGcH-Dfy1m5U6FxujKlPoKI_ihk2m22YHEKPUCw7Ft6CqEKCuz2tKcT5CbVWdViSoQ96WHYjmlWD5PWg5wYkRAdEKnNsgsQzmocW_Q=w385-h290-s-no-gm?authuser=0",
+          srcSet: "https://lh3.googleusercontent.com/pw/ADCreHfP71PJa3Vgs64RaOXdDPADo9YiEs1gs4hNAYHaXw2vQ2DyxnzGfIxLMSm0cw9975qzFgF-osG6dgI3PWODRmcISuAP8YQZwIVx8EzltRRpP1kU-DNN-RnZfeSgqLky54cEjcdt9Tzhnnij-JJfriZeM9x3v8bePynlKDfvYvj1SbuesMoFnjXj3SLeKeUmaTdGJHoL9Luzh7JvvOc7QbGka6mYlLDJCrmlhXCJiTI54cp0uxQF1L1s5cWxboCjkZM2RW9XJbsFASBhDOF5HsRbWY9J9I8dh8SwV4jakS-rnzSdcXhg_nZ2AmNyJpUjlVPXlSB8whTnVnOfftgRCFueHA6bRcv_0EvPlMuBYlLlBZrbRSuazYhIA_rCVnIMG9dlgnTI4bb7f6zxdgvhLIj0Lzxd68mMOk5xLfIfx9hTIQr1dEHuJ4MYeGckt0x-qT45s3URLeW894Odxirc-pZry0WfGKyo3beF2p5tjKfCYoQoDbWACy6VnhxLJ8ZgSYETTcM_nuR2iPe7HzDQbv8QvvQAWuFFIINJCNDhcJpXMsTAxxKVzFW7iu9VTW9dwgh2lYHOQhhS3s63RRb6bN1X7eu0rXA9XxO3UvYT7kLWDmuILkJ7RSdPy7acgZ6TDfvAWll62BQiZZwgexKLjzaYcLiY4sukR01BoKVs3bGo69Q8uF7yypzpG39gaSaPZv5bnuq-mhlQ5850e7sfKZa1jbW0aXzlp71WjdRzJ0KjdAGfKyPGyQXJgSn4t2xzwZ5OQ8DqbkbOZD-zhEnXKs_KqEcxk9c1wDcbsARN98Gs7kQNR21blSKrHFpH8DRlQ2xOT0qK7mxgOgf3QRFG2uIDo39BIJDOT3CGHIDpNJywsw710FJfWu8TiYn-zqtQ6Q5cB7YtcK9_8w-QzKSb2CROeMPjXyVNLI2X_3-ikwQ=w385-h290-s-no-gm?authuser=0",
 
           title: "Lorem Ipsum 2",
           text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled",
         },
          {
           id: 3,
-          srcSet: "https://lh3.googleusercontent.com/pw/ADCreHeqEsAnq65ks5B4_8SZLaDo8nUQ8G5nLbhlB_z3dU1KUAW-46JWK7pB-Q5mMdFSCey_xykZldm1Q2v6Dzf6Zxb9wOb3TtTTizgALndC7qct5nI0WsM5AGCCFo_WH7K8on6BkEv2eeKIoYd6G96t3s6Tpo9rWX1jOlqmf_CWCCEuHmsTPDZRKsn6riBDrPWXJy-mGEy1WITcwxbQFYM8oP28BcLvCCgj0L0u0sF_TCcCY1gXQp2XLStRqB5lL5jA4-Tg7yGrZcBqEaVjWdyj23jYwFba_SGVTFLAJWPruIPMb89_OP2kknny8iuO4ARaYaWG4zFR3b7FnLtOXz42zrotdTDAE5BQA3NYZh5N287Ju6IbbL6wlCaQ8xYm4qtqnTNhHetzOkMaX77TnPqqXdTNi988nB4mGQXZjXGIpwO1Fr5LiXHw6AZdko1xrpxi066Ov5aDY81oJdN2wKE0AqyCqsUmWSypiWmhi8eXpC718h_ILrHgZI4KhehF1L1EU7JSbwUYufjIFw4qcV-C4Hx1eBpFwskwSeIfkk-SWBceT0BnnO27hmCAr603HpS_1S137nd9qDTtJes0ZUBWpcjLWu6x8peUeZKJwNHZYP4VPrgMR-CKP9mNG7KN9rQSaIzZbBkM21KqYEaFsss9kF-L4ls0T-zjwLcO_HxUqNmo3CMUKZMIBA66oOemumFganmy5sQTDJ_3ssLYnth98NqsKwvU-_hoR5DbXEIP8Ji5QCQxqmp3HtZW6PjUUVqLdrwaIcG25MdHNYmoXo45TDXQEvVHpTe6uc36Ba1DpNEqo2i84s9nHe3xNNqzqrHvlPem_zkzsg1UmYo6VhnQZICo_suH-BW7E0e4HyjzzJfIO7evqwb1_RgZi0CRir42REooQD-uR1XNtMyTT_N6ZOcLqJMOJWkDmMnp8JnFhM3g3E7X4itm08Cjo4m5id8=w385-h290-s-no-gm?authuser=0",
+          srcSet: "https://lh3.googleusercontent.com/pw/ADCreHfFqklW1UHU4JaH7MbQnHcaM14ImF2JLdGh3luI0ll_z7ssvrr3zDymkoSrr490e3RclCljGQ-WzyKLq1NQBtd0Tw0s9_WCxiesvc2Z2PCl1B9VjwIccgyj2IQXLYMuq5KIlWPxIClCcZtsbVfnAajU81N1CgFrQnQAnu2qAxOqwa9q-KySeJDyFS2tEIRCwM1EKpXGP8hduV4CZZ4h024TzTz_GklD2NQE-s_Ga0zZBJdVGawnoVOEQKry-SjDNdoE9K0WA6X_6cqa8qc2zhbSSdnFGrHLdQ0GE4zhLxpesTd6keS2PGyOGX9HuXCcyHWjwci_OVmppnjApIIbd56AkPjCMbvIWkFoqWd3SHwkHeUa1xTKCJehKflwbMzXtsKvCBJrIbDs1ZdI4gdICTFtVWxEOrC9mC_sjqbQObbrFdxST0vypgJhq9FRUaerNSqaJ5rMjfQxKAIJujfAOUly20nOFQoe-K7ypdUo_4XAWTAgAu6AiuALvx6NMJRlHRnmgVL2ZQV4F_d9zfuGjt5hjnJqfSkQ2kFaUKrJ84Q7z9w-K1lrt_vtMUYy4uXvUSNNbf9WfUi8KHKyaCNPyxccdRbLFuNTZ0SIfbwxAdmVJNRBtImtOhRfOD6ZE9DcaGbebiKOOJat1I58F2xkRSg7G51CxtfOXKP42cRPjSJ53DKmg4rnmCFl0CKqwse0nZO1e7WdxTytYdR5AfkH2zp6e9_uYBqfvkc3nf55OEUKSbEzF2pA7GzMdHIXwPo8nNHARWQZmeBTAuazW_7Vnq2eORmLIOvre_uudFhoYCu8-JtY2O0p6tvV56NwmqqqXFSoXVZRA43-QX2VmXWgiow2GYYTqnI5J6kon6-eHY6u872YCBKNsKCpZ651pId_eKOVaOb-j6BvH0L7OlyW9Y-k5JZOzA1pq_nLcxMJoeijr8ataZPK-W8MEtc6HVM=w385-h290-s-no-gm?authuser=0",
           title: "Lorem Ipsum 3",
           text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled",
         },
@@ -338,6 +340,12 @@ export default {
     nextSlide() {
       this.currentIndex = (this.currentIndex + 1) % this.cards.length;
     },
+    openModal() {
+      this.isContactModalOpen = true;
+    },
+    closeModal() {
+      this.isContactModalOpen = false;
+    }
   },
 
 
@@ -346,6 +354,7 @@ export default {
       components: {
        Vuebar,
        ContactForm,
+       ContactModal,
     },
 };
 
@@ -682,7 +691,7 @@ export default {
 @media (max-width: 991px) {
   .about__content {
     max-width: 100%;
-    padding-top: 100px;
+   
     margin-top: 40px;
   }
 }
@@ -781,6 +790,7 @@ export default {
 @media (max-width: 991px) {
   .testimonials__content {
     width: 100%;
+    margin-left: 0;
   }
 }
 .testimonial-inner {
@@ -797,9 +807,10 @@ export default {
 }
 @media (max-width: 991px) {
   .testimonial-inner {
-    max-width: 100%;
+    max-width: 90%;
     margin-top: 40px;
     padding: 0 20px;
+   
   }
 }
 
@@ -898,6 +909,7 @@ export default {
 @media (max-width: 991px) {
   .testimonials__image {
     margin-left: 10px;
+    
   }
 }
 
