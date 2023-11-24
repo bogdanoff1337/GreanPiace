@@ -7,6 +7,7 @@
             v-model="name"
             name="name"
             placeholder="Your Name"
+            required 
           >
          
           <input 
@@ -15,6 +16,7 @@
             v-model="email"
             name="email"
             placeholder="Your Email"
+            required 
             >
           
           <input 
@@ -22,7 +24,7 @@
             name="message"
             v-model="message"
             cols="30" rows="5"
-            placeholder="Message">
+            placeholder="Message" required >
          
           
           <button class="help__button" style="margin-top: 14px;" type="submit" value="Send">Send</button>

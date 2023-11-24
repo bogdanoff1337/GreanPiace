@@ -3,9 +3,9 @@
     <div class="modal-content">
     
       <form @submit.prevent="sendEmail">
-        <input class="contact__input" type="text" v-model="name" name="name" placeholder="Your Name" />
-        <input class="contact__input" type="email" v-model="email" name="email" placeholder="Your Email" />
-        <input class="contact__input" name="message" v-model="message" cols="30" rows="5" placeholder="Message" />
+        <input class="contact__input" type="text" v-model="name" name="name" placeholder="Your Name" required  />
+        <input class="contact__input" type="email" v-model="email" name="email" placeholder="Your Email" required />
+        <input class="contact__input" name="message" v-model="message" cols="30" rows="5" placeholder="Message" required />
         <button class="help__button" style="margin-top: 14px;" type="submit" value="Send">Send</button>
       </form>
       <button class="close-button" @click="closeModal">&times;</button>

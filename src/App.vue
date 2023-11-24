@@ -346,6 +346,16 @@ export default {
       this.isContactModalOpen = false;
     }
   },
+  mounted() {
+    // Отримати поточне значення cookie (якщо воно вже існує)
+    const existingCookieValue = document.cookie.replace(/(?:(?:^|.*;\s*)cookieName\s*\=\s*([^;]*).*$)|^.*$/, "$1");
+
+    // Встановити нове значення cookie з атрибутом SameSite=None; Secure
+    document.cookie = "cookieName=newCookieValue; SameSite=None; Secure";
+
+    // Вивести в консоль для перевірки
+    console.log("Cookie встановлено з атрибутом SameSite=None; Secure");
+  },
 
 
      
@@ -474,6 +484,7 @@ export default {
 @media (max-width: 991px) {
   .hero__block {
     flex-wrap: wrap;
+    justify-content: space-evenly;
   }
 }
 
