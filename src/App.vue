@@ -1,4 +1,3 @@
-
 <template>
   <vue-bar>
   <div class="div">
@@ -16,7 +15,7 @@
                 src="./img/Lawncare.png"
                 class="hero__image-2"
               />
-              <div class="hero__text">Round Rock<br /><strong>Yard Maintenance</strong></div>
+              <div class="roundRock">Round Rock<br /><div class="yardMaintenance">Yard Maintenance</div></div>
               
             </div>
               <div class="hero__description">Lorem Ipsum is simply dummy</div>
@@ -31,10 +30,10 @@
   <div class="services__heading">
     <div class="services__content">
       <!-- Стрілки для перегляду назад та вперед -->
-      <div class="slider__arrow slider__arrow--prev" @click="prevSlide">&lt;</div>
+      <div class="slider__arrow slider__arrow--bottom  slider__arrow--prev" @click="prevSlide">&lt;</div>
 
       <transition name="fade" mode="out-in">
-        <div :key="cards[currentIndex].id" class="services__item">
+        <div :key="cards[currentIndex].id" class="services__item" >
       
         <div class="services__card">
           <img
@@ -52,7 +51,7 @@
       </div>
     </transition>
       <!-- Стрілки для перегляду назад та вперед -->
-      <div class="slider__arrow slider__arrow--next" @click="nextSlide">&gt;</div>
+      <div class="slider__arrow slider__arrow--bottom slider__arrow--next" @click="nextSlide">&gt;</div>
     </div>
   </div>
  <!-- About -->
@@ -374,12 +373,32 @@ export default {
 }
 
 .slider__arrow {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 24px;
+  width: 40px; 
+  height: 40px; 
+  background-color: #11661f;;
+  border-radius: 50%; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px; 
+  color: #FFF; 
   cursor: pointer;
-  color: #000; /* Колір стрілок */
+  
+}
+
+.slider__arrow--bottom {
+  bottom: 0;
+}
+
+@media (max-width: 991px) {
+  .slider__arrow {
+    position: absolute;
+    top: 10px;
+   margin-top: 50%;
+  }
+}
+.slider__arrow:hover{
+  background-color: #0d4c14;
 }
 
 .slider__arrow--prev {
@@ -428,6 +447,7 @@ export default {
   display: flex;
   margin-bottom: -23px;
   width: 983px;
+  
   max-width: 100%;
   flex-direction: column;
   
@@ -442,7 +462,7 @@ export default {
 .hero__block {
   align-self: center;
   display: flex;
-  width: 363px;
+  
   max-width: 100%;
   
   gap: 20px;
@@ -467,16 +487,26 @@ export default {
   max-width: 100%;
 }
 
-.hero__text {
-  color: #fff;
-  letter-spacing: 7.02px;
-  align-self: start;
-  flex-grow: 1;
-  flex-basis: auto;
-  font: 800 27px/118.5% Poppins, sans-serif;
-  padding: 58px auto;
+.roundRock {
+  color: #FFF;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  font-family: Poppins;
+  font-size: 60px;
+  
+  font-style: normal;
+  font-weight: 800;
+  line-height: 118.5%; /* 71.1px */
 }
 
+.yardMaintenance{
+  color: #FFF;
+  font-family: Poppins;
+  font-size: 27px;
+  font-style: normal;
+  font-weight: 800;
+  line-height: 118.5%;
+  letter-spacing: 7.02px;
+  }
 .hero__description {
   color: #fff;
   text-align: center;
