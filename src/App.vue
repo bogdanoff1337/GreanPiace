@@ -310,20 +310,20 @@ export default {
       cards: [
         {
           id: 1,
-          srcSet: "https://lh3.googleusercontent.com/pw/ADCreHcP42N3rdeud-HKTSn7h3pUA3OVEuGEY9U66BsWlR7UJl_v5WxybJSqHAHNLNesbX2DRmKZ47Z3GGDuh2u8s2QVg-JgLPw1KqaB2ByJ3_h2d1zA8LWs0HUqS9BUPgsmv7S6hQAL2Dc9ypd9mkiNBpbcl53GPWKx9UcpkLjkkmggoYZkbWtZKvbc01QU11aIMEUV3WCce9BTuJ98I5XDU_nbKZv0V7MZw_j78faYzxUy0jIdwccHyK5a34A7SJQ73wcH2FdQH5zY__-TC8fdF0KnhMb82Q58IRb2q4yQRJZuzaHXN9y3pKxc2TQAEVOfByYIgaHwViPgNyzSxKFgB6asjSolEtvm32_x7lJ83ecNwRGBLYZZCuG1WyYoh3tAm17wI-THCbNtyRhaxPLZIVHiFk1_clUQz4oJ2uKVgB0Ql2VspqSQeAcQwrCQc6O-fY7UUDsrZ7r75J6kOsuqheurwdCzMXQWsQiVxBxEpEmH4fsOSyI-RUoAfi-VS-vyFGAqzUgwyjRKlnMHGXo_FpeKxqkc6U0pUgsKDg4QPhKVZKlBkgAF0bIjIPqne65-1q1RMtluYzzl_TXa7p3GzonRh7mF9krIZ9qHrbWagR5DE0uotKcn2-KktSBkMlfy_Ve2bh9EhYiBBoucauc--gOK3tso4PZNAXmA-5WkpM2rGPmInItk-VfxXTDTXDFiCMDj7M4Xb-9knv4rZO6zmhuYoPutySzfnSEl21kMhL6id0SGLbu14T0iOWisTJ7w0qyG9t2KRJB1C24bIatZskmLWx-hzUimS3s0RCecNV4kE1mqDTsYu-X9d2rnUzeE8q9ZBAxN7K9XlOtZFj290NrsYCOZLRF2TpiXVt5QUyKiU85yuTa2Q0O6idi2lG0geeR_4nBvuJA_-2-gjCFF-PpSzFNSjJZFDk7vCq62-gY=w385-h290-s-no-gm?authuser=0",
+          srcSet: "https://images.prom.ua/3538732285_w640_h640_semena-rajgrasa-gazonnogo.jpg",
           title: "Lorem Ipsum 1",
           text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled",
         },
         {
           id: 2,
-          srcSet: "https://lh3.googleusercontent.com/pw/ADCreHfP71PJa3Vgs64RaOXdDPADo9YiEs1gs4hNAYHaXw2vQ2DyxnzGfIxLMSm0cw9975qzFgF-osG6dgI3PWODRmcISuAP8YQZwIVx8EzltRRpP1kU-DNN-RnZfeSgqLky54cEjcdt9Tzhnnij-JJfriZeM9x3v8bePynlKDfvYvj1SbuesMoFnjXj3SLeKeUmaTdGJHoL9Luzh7JvvOc7QbGka6mYlLDJCrmlhXCJiTI54cp0uxQF1L1s5cWxboCjkZM2RW9XJbsFASBhDOF5HsRbWY9J9I8dh8SwV4jakS-rnzSdcXhg_nZ2AmNyJpUjlVPXlSB8whTnVnOfftgRCFueHA6bRcv_0EvPlMuBYlLlBZrbRSuazYhIA_rCVnIMG9dlgnTI4bb7f6zxdgvhLIj0Lzxd68mMOk5xLfIfx9hTIQr1dEHuJ4MYeGckt0x-qT45s3URLeW894Odxirc-pZry0WfGKyo3beF2p5tjKfCYoQoDbWACy6VnhxLJ8ZgSYETTcM_nuR2iPe7HzDQbv8QvvQAWuFFIINJCNDhcJpXMsTAxxKVzFW7iu9VTW9dwgh2lYHOQhhS3s63RRb6bN1X7eu0rXA9XxO3UvYT7kLWDmuILkJ7RSdPy7acgZ6TDfvAWll62BQiZZwgexKLjzaYcLiY4sukR01BoKVs3bGo69Q8uF7yypzpG39gaSaPZv5bnuq-mhlQ5850e7sfKZa1jbW0aXzlp71WjdRzJ0KjdAGfKyPGyQXJgSn4t2xzwZ5OQ8DqbkbOZD-zhEnXKs_KqEcxk9c1wDcbsARN98Gs7kQNR21blSKrHFpH8DRlQ2xOT0qK7mxgOgf3QRFG2uIDo39BIJDOT3CGHIDpNJywsw710FJfWu8TiYn-zqtQ6Q5cB7YtcK9_8w-QzKSb2CROeMPjXyVNLI2X_3-ikwQ=w385-h290-s-no-gm?authuser=0",
+          srcSet: "https://images.prom.ua/3538732285_w640_h640_semena-rajgrasa-gazonnogo.jpg",
 
           title: "Lorem Ipsum 2",
           text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled",
         },
          {
           id: 3,
-          srcSet: "https://lh3.googleusercontent.com/pw/ADCreHfFqklW1UHU4JaH7MbQnHcaM14ImF2JLdGh3luI0ll_z7ssvrr3zDymkoSrr490e3RclCljGQ-WzyKLq1NQBtd0Tw0s9_WCxiesvc2Z2PCl1B9VjwIccgyj2IQXLYMuq5KIlWPxIClCcZtsbVfnAajU81N1CgFrQnQAnu2qAxOqwa9q-KySeJDyFS2tEIRCwM1EKpXGP8hduV4CZZ4h024TzTz_GklD2NQE-s_Ga0zZBJdVGawnoVOEQKry-SjDNdoE9K0WA6X_6cqa8qc2zhbSSdnFGrHLdQ0GE4zhLxpesTd6keS2PGyOGX9HuXCcyHWjwci_OVmppnjApIIbd56AkPjCMbvIWkFoqWd3SHwkHeUa1xTKCJehKflwbMzXtsKvCBJrIbDs1ZdI4gdICTFtVWxEOrC9mC_sjqbQObbrFdxST0vypgJhq9FRUaerNSqaJ5rMjfQxKAIJujfAOUly20nOFQoe-K7ypdUo_4XAWTAgAu6AiuALvx6NMJRlHRnmgVL2ZQV4F_d9zfuGjt5hjnJqfSkQ2kFaUKrJ84Q7z9w-K1lrt_vtMUYy4uXvUSNNbf9WfUi8KHKyaCNPyxccdRbLFuNTZ0SIfbwxAdmVJNRBtImtOhRfOD6ZE9DcaGbebiKOOJat1I58F2xkRSg7G51CxtfOXKP42cRPjSJ53DKmg4rnmCFl0CKqwse0nZO1e7WdxTytYdR5AfkH2zp6e9_uYBqfvkc3nf55OEUKSbEzF2pA7GzMdHIXwPo8nNHARWQZmeBTAuazW_7Vnq2eORmLIOvre_uudFhoYCu8-JtY2O0p6tvV56NwmqqqXFSoXVZRA43-QX2VmXWgiow2GYYTqnI5J6kon6-eHY6u872YCBKNsKCpZ651pId_eKOVaOb-j6BvH0L7OlyW9Y-k5JZOzA1pq_nLcxMJoeijr8ataZPK-W8MEtc6HVM=w385-h290-s-no-gm?authuser=0",
+          srcSet: "https://images.prom.ua/3538732285_w640_h640_semena-rajgrasa-gazonnogo.jpg",
           title: "Lorem Ipsum 3",
           text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled",
         },
@@ -1084,9 +1084,9 @@ export default {
 .contact-container {
   display: flex;
   flex-direction: column;
-    justify-content: space-between;
-    max-width: 600px;
-    margin: 0 auto;
+  justify-content: space-between;
+  max-width: 600px;
+  margin: 0 auto;
 }
 @media (max-width: 991px) {
   .contact-container {
@@ -1100,7 +1100,7 @@ export default {
   gap: 20px;
   text-align: center;
 }
-.img-14 {
+.img-14, .img-15, .img-16 {
   aspect-ratio: 1;
   object-fit: contain;
   object-position: center;
@@ -1120,6 +1120,7 @@ export default {
     white-space: initial;
   }
 }
+
 
 .img-15 {
   aspect-ratio: 1;
